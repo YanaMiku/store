@@ -253,6 +253,35 @@
       letter-spacing: -0.02em;
     }
 
+    /* Animated text for YanaMiku in header - like skeleton loading but colorful */
+    .animated-brand-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      background: linear-gradient(
+        90deg,
+        #e0b0ff 0%,
+        #c28eff 25%,
+        #a56aff 50%,
+        #c28eff 75%,
+        #e0b0ff 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 2s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 0% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+
     /* Typewriter cursor - PIPE STYLE dengan fixed height container */
     .typewriter-container {
       display: inline-flex;
@@ -260,11 +289,16 @@
       min-height: 1.5em;
       line-height: 1.5;
       vertical-align: middle;
+      max-width: 100%;
+      flex-wrap: wrap;
     }
     
     #typewriter {
       display: inline-block;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
     }
     
     .typewriter-cursor {
@@ -519,6 +553,37 @@
       color: #c28eff;
       filter: drop-shadow(0 0 20px rgba(200, 150, 255, 0.8));
     }
+
+    /* Responsive font sizes for typewriter */
+    @media (max-width: 768px) {
+      .premium-title {
+        font-size: 2.5rem;
+      }
+      #typewriter {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .premium-title {
+        font-size: 2rem;
+      }
+      #typewriter {
+        font-size: 1.5rem;
+        max-width: 280px;
+      }
+    }
+
+    /* Header brand text responsive */
+    .animated-brand-text {
+      font-size: 1.25rem;
+    }
+    
+    @media (max-width: 480px) {
+      .animated-brand-text {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -593,7 +658,7 @@
       <!-- logo YanaMiku - menggunakan file GIF letter-y.gif -->
       <div class="flex items-center space-x-3">
         <img src="letter-y.gif" alt="Y" class="logo-image">
-        <span class="text-xl font-semibold tracking-tight bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400 bg-clip-text text-transparent">YanaMiku</span>
+        <span class="animated-brand-text">YanaMiku</span>
       </div>
 
       <!-- desktop nav (hidden on mobile) -->
