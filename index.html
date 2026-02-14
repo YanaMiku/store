@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>YanaMiku · Jasa & Script Premium</title>
+  <!-- SEO & Open Graph -->
+  <meta name="description" content="YanaMiku: Jasa pembuatan website, script website siap pakai, jual script bot WhatsApp, dan jasa pembuatan bot WhatsApp. Profesional, modern, dan terpercaya.">
+  <meta name="keywords" content="jasa website, script website, jual script bot, bot whatsapp, jasa bot whatsapp, YanaMiku, pembuatan website, script siap pakai">
+  <meta property="og:title" content="YanaMiku — Jasa & Script Website | Bot WhatsApp">
+  <meta property="og:description" content="Layanan pembuatan website modern, jual script siap pakai, dan pembuatan bot WhatsApp. Cepat, berkualitas, dan harga bersaing.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=1200&auto=format">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Tailwind + Font Awesome + Google Fonts Premium -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: linear-gradient(165deg, #0d0b1a 0%, #1e1a3a 50%, #2a1f3c 100%);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      position: relative;
+    }
+
+    /* Custom scrollbar with gradient theme */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(25, 20, 45, 0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #b88eff, #8a6cf0);
+      border-radius: 8px;
+      border: 2px solid rgba(25, 20, 45, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #c28eff, #9d6cf0);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
+    /* Firefox scrollbar */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #8a6cf0 rgba(25, 20, 45, 0.5);
+    }
+
+    /* Particle background */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Content wrapper to appear above particles */
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+
+    .glass-panel {
+      background: rgba(25, 20, 45, 0.4);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(180, 140, 255, 0.2);
+    }
+
+    .glass-nav {
+      background: rgba(20, 15, 40, 0.7);
+      backdrop-filter: blur(16px) saturate(200%);
+      -webkit-backdrop-filter: blur(16px) saturate(200%);
+      border-bottom: 1px solid rgba(200, 150, 255, 0.2);
+      position: relative;
+      z-index: 100;
+    }
+
+    .service-card {
+      background: rgba(30, 20, 50, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(200, 150, 255, 0.15);
+      border-radius: 2rem;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+      opacity: 0;
+      transform: translateY(30px);
+      will-change: transform, opacity;
+    }
+
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-card:hover {
+      transform: scale(1.02) translateY(-6px);
+      border-color: rgba(180, 130, 255, 0.5);
+      box-shadow: 0 30px 40px -25px #8a6cf0;
+    }
+
+    .category-tab {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(200, 150, 255, 0.15);
+      backdrop-filter: blur(4px);
+      transition: 0.2s ease;
+      font-weight: 500;
+      padding: 0.7rem 1.5rem;
+      border-radius: 3rem;
+      font-size: 0.9rem;
+      color: #e0d0ff;
+    }
+
+    .category-tab.active {
+      background: rgba(160, 100, 255, 0.3);
+      border-color: #b88eff;
+      color: white;
+      box-shadow: 0 8px 20px -10px #9d6cf0;
+    }
+
+    .category-tab:hover {
+      background: rgba(180, 130, 255, 0.15);
+      border-color: rgba(200, 150, 255, 0.4);
+    }
+
+    .search-input {
+      background: rgba(20, 15, 40, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(200, 150, 255, 0.15);
+      padding-left: 3rem;
+      border-radius: 3rem;
+      transition: 0.2s;
+      color: white;
+      width: 100%;
+    }
+
+    .search-input:focus {
+      border-color: #c28eff;
+      box-shadow: 0 0 0 3px rgba(160, 100, 255, 0.25);
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: rgba(220, 180, 255, 0.5);
+    }
+
+    .whatsapp-btn {
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.25);
+      color: #d1fae5;
+      border-radius: 2rem;
+      transition: 0.25s;
+    }
+
+    .whatsapp-btn:hover {
+      background: rgba(37, 211, 102, 0.25);
+      border-color: #25d366;
+      color: white;
+    }
+
+    .detail-btn {
+      background: rgba(160, 100, 255, 0.2);
+      border: 1px solid rgba(180, 130, 255, 0.3);
+      color: #f0e0ff;
+      border-radius: 2rem;
+      transition: 0.25s;
+    }
+
+    .detail-btn:hover {
+      background: rgba(160, 100, 255, 0.35);
+      border-color: #c28eff;
+      color: white;
+    }
+
+    .footer-link {
+      opacity: 0.7;
+      transition: 0.2s;
+    }
+
+    .footer-link:hover {
+      opacity: 1;
+      color: #e0c0ff;
+    }
+
+    /* Dropdown styles with smooth animation */
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      min-width: 200px;
+      background: rgba(25, 15, 45, 0.85);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(200, 150, 255, 0.25);
+      border-radius: 1.25rem;
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.3s ease, visibility 0.25s;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.6);
+      z-index: 100;
+    }
+
+    .dropdown-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 1.2rem;
+      color: rgba(230, 210, 255, 0.8);
+      transition: all 0.15s;
+      font-size: 0.95rem;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(160, 100, 255, 0.2);
+      color: white;
+    }
+
+    .dropdown-item i {
+      width: 1.25rem;
+      color: #c28eff;
+    }
+
+    /* Premium font untuk judul */
+    .premium-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Typewriter cursor - PIPE STYLE dengan fixed height container */
+    .typewriter-container {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.5em;
+      line-height: 1.5;
+      vertical-align: middle;
+    }
+    
+    #typewriter {
+      display: inline-block;
+      white-space: nowrap;
+    }
+    
+    .typewriter-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.2em;
+      background-color: #c28eff;
+      margin-left: 4px;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Modal styles for product detail */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: rgba(25, 15, 45, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(200, 150, 255, 0.35);
+      border-radius: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    /* Welcome Popup Card */
+    .welcome-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.3s ease;
+    }
+
+    .welcome-popup.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .welcome-card {
+      background: rgba(25, 15, 45, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(200, 150, 255, 0.35);
+      border-radius: 2rem;
+      max-width: 450px;
+      width: 90%;
+      padding: 2rem;
+      position: relative;
+      transform: scale(1);
+      transition: transform 0.3s ease;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .welcome-card .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(160, 100, 255, 0.2);
+      border: 1px solid rgba(200, 150, 255, 0.3);
+      color: #e0d0ff;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 1.2rem;
+    }
+
+    .welcome-card .close-btn:hover {
+      background: rgba(160, 100, 255, 0.4);
+      border-color: #c28eff;
+      color: white;
+    }
+
+    .welcome-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f0e0ff, #d8b0ff, #b88eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .welcome-card .info-item {
+      margin-bottom: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(160, 100, 255, 0.1);
+      border: 1px solid rgba(200, 150, 255, 0.2);
+      border-radius: 1rem;
+      color: #e0d0ff;
+    }
+
+    .welcome-card .info-item strong {
+      color: #c28eff;
+      margin-right: 0.5rem;
+    }
+
+    .welcome-card .info-item i {
+      color: #c28eff;
+      width: 1.5rem;
+      margin-right: 0.5rem;
+    }
+
+    /* Gradient text colors - dominated by purple */
+    .gradient-text-primary {
+      background: linear-gradient(135deg, #f0e0ff, #d8b0ff, #b88eff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-secondary {
+      background: linear-gradient(135deg, #e0c0ff, #c28eff, #a56aff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bg-gradient-purple {
+      background: linear-gradient(135deg, #2a1f3c, #1e1a3a, #2d1f4a);
+    }
+
+    /* Ensure content is above particles */
+    header, main, footer {
+      position: relative;
+      z-index: 20;
+    }
+
+    /* Logo image styling */
+    .logo-image {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(180, 130, 255, 0.5));
+    }
+
+    /* Product card price row - selalu 1 baris */
+    .product-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+    }
+    
+    .product-price {
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+    
+    .product-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    
+    .product-actions .detail-btn,
+    .product-actions .whatsapp-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    
+    @media (max-width: 380px) {
+      .product-price-row {
+        gap: 0.25rem;
+      }
+      .product-actions {
+        gap: 0.25rem;
+      }
+      .product-actions .detail-btn,
+      .product-actions .whatsapp-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+      }
+    }
+
+    /* Product image container - fixed 1:1 aspect ratio with icon styling */
+    .product-image-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, rgba(160, 100, 255, 0.2), rgba(100, 50, 200, 0.3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(200, 150, 255, 0.3);
+    }
+
+    .product-image-container i {
+      font-size: 5rem;
+      color: rgba(200, 150, 255, 0.9);
+      filter: drop-shadow(0 0 15px rgba(160, 100, 255, 0.5));
+      transition: all 0.3s ease;
+    }
+
+    .product-image-container:hover i {
+      transform: scale(1.1);
+      color: #c28eff;
+      filter: drop-shadow(0 0 20px rgba(200, 150, 255, 0.8));
+    }
+  </style>
+</head>
+<body>
+  <!-- Particle background -->
+  <div id="particles-js"></div>
+
+  <!-- Welcome Popup Card (selalu muncul saat refresh) -->
+  <div id="welcomePopup" class="welcome-popup">
+    <div class="welcome-card">
+      <button id="closeWelcomePopup" class="close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <h2>Selamat Datang Di YanaMiku</h2>
+      
+      <div class="info-item">
+        <i class="fas fa-user"></i>
+        <strong>Nama:</strong> Fawwaz Gilang Pradana
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-hashtag"></i>
+        <strong>Absen:</strong> 11
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-graduation-cap"></i>
+        <strong>Kelas:</strong> XI - TKJ 2
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-book"></i>
+        <strong>Mapel:</strong> Digital Marketing
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-tasks"></i>
+        <strong>Tugas:</strong> Membuat Website Store
+      </div>
+      
+      <div class="info-item">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <strong>Pembimbing:</strong> Catur Eko Raharjo - SMIK
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Detail Produk -->
+  <div id="productModal" class="modal-overlay">
+    <div class="modal-content p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-2xl font-semibold gradient-text-primary" id="modalTitle"></h3>
+        <button id="closeModal" class="text-purple-300 hover:text-white text-2xl">&times;</button>
+      </div>
+      <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-purple-500/20 to-purple-800/30 flex items-center justify-center">
+        <i id="modalIcon" class="text-8xl text-purple-300/90"></i>
+      </div>
+      <p class="text-purple-200/80 mb-4" id="modalDescription"></p>
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-2xl font-light text-white/90" id="modalPrice"></span>
+        <span class="category-tab !py-1 !px-3 text-sm" id="modalCategory"></span>
+      </div>
+      <a href="#" id="modalWhatsApp" target="_blank" class="whatsapp-btn w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium">
+        <i class="fab fa-whatsapp text-lg"></i> Order via WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- glassmorphism navbar with dropdown -->
+  <header class="glass-nav sticky top-0 z-50 py-3 px-5 md:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- logo YanaMiku - menggunakan file GIF letter-y.gif -->
+      <div class="flex items-center space-x-3">
+        <img src="letter-y.gif" alt="Y" class="logo-image">
+        <span class="text-xl font-semibold tracking-tight bg-gradient-to-r from-purple-200 via-purple-300 to-purple-400 bg-clip-text text-transparent">YanaMiku</span>
+      </div>
+
+      <!-- desktop nav (hidden on mobile) -->
+      <nav class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="#" id="beranda-link" class="text-purple-200 hover:text-purple-100 transition">Beranda</a>
+        <a href="#layanan" class="text-purple-200 hover:text-purple-100 transition">Layanan</a>
+        <a href="#katalog" class="text-purple-200 hover:text-purple-100 transition">Katalog Script</a>
+        <a href="https://yanamiku.github.io" target="_blank" class="text-purple-200 hover:text-purple-100 transition">Portfolio</a>
+      </nav>
+
+      <!-- right section: contact icon + dropdown button -->
+      <div class="flex items-center space-x-4 relative">
+        <!-- WhatsApp icon yang bisa diklik - Updated with correct number -->
+        <a href="https://wa.me/6285793589243?text=Halo%20YanaMiku%2C%20saya%20tertarik%20dengan%20layanan%20Anda" target="_blank" class="fab fa-whatsapp text-xl text-green-400 hover:text-green-300 transition"></a>
+        
+        <!-- dropdown button (hamburger) -->
+        <button id="dropdownToggle" class="text-purple-200 hover:text-white transition text-2xl focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- dropdown menu (animasi turun/naik) - tanpa profile & settings -->
+        <div id="dropdownMenu" class="dropdown-menu">
+          <a href="#" id="dropdown-beranda" class="dropdown-item"><i class="fas fa-home"></i> Beranda</a>
+          <a href="#layanan" class="dropdown-item"><i class="fas fa-cube"></i> Layanan</a>
+          <a href="#katalog" class="dropdown-item"><i class="fas fa-store"></i> Katalog Script</a>
+          <a href="https://yanamiku.github.io" target="_blank" class="dropdown-item"><i class="fas fa-briefcase"></i> Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-5 sm:px-7 lg:px-8 py-10 md:py-16 relative z-20">
+    
+    <!-- hero section dengan TypeWriter Effect -->
+    <section class="text-center md:text-left mb-20">
+      <div class="glass-panel inline-block px-6 py-3 mb-5 rounded-full">
+        <span class="text-xs font-semibold uppercase tracking-wider text-purple-300"><i class="fas fa-code mr-2 text-purple-400"></i>Developer & Creator Tools</span>
+      </div>
+      
+      <!-- Judul dengan TypeWriter - tanpa "Solusi Digital" -->
+      <h1 class="premium-title text-4xl md:text-6xl font-bold leading-tight">
+        <span class="gradient-text-primary">YanaMiku</span><br>
+        <span class="typewriter-container">
+          <span id="typewriter" class="gradient-text-secondary"></span>
+          <span class="typewriter-cursor"></span>
+        </span>
+      </h1>
+      
+      <p class="text-lg text-purple-200/80 mt-6 max-w-2xl mx-auto md:mx-0">Jasa pembuatan website profesional, jual script siap pakai, dan pembuatan bot WhatsApp custom. Cepat, modern, dan support penuh.</p>
+      
+      <div class="mt-8 flex flex-wrap gap-5 justify-center md:justify-start">
+        <a href="#katalog" class="bg-purple-600/40 hover:bg-purple-600/60 backdrop-blur-sm border border-purple-400/50 px-8 py-3 rounded-full text-base font-medium transition flex items-center gap-3 text-white">
+          <i class="fas fa-store text-purple-300"></i> Lihat Script
+        </a>
+        <a href="https://wa.me/6285793589243?text=Halo%20YanaMiku%2C%20saya%20tertarik%20dengan%20jasa%20pembuatan%20website%20/%20bot" target="_blank" class="bg-transparent border border-purple-400/40 px-8 py-3 rounded-full text-base font-medium hover:bg-purple-500/10 transition flex items-center gap-3 text-purple-200">
+          <i class="fab fa-whatsapp text-green-400"></i> Konsultasi Gratis
+        </a>
+      </div>
+
+      <!-- stats mini + lokasi toko -->
+      <div class="flex flex-wrap items-center gap-8 mt-12 justify-center md:justify-start">
+        <div><span class="text-2xl font-bold text-purple-300">50+</span> <span class="text-purple-200/70 ml-2">Project</span></div>
+        <div><span class="text-2xl font-bold text-purple-300">24/7</span> <span class="text-purple-200/70 ml-2">Support</span></div>
+        <div><span class="text-2xl font-bold text-purple-300">100%</span> <span class="text-purple-200/70 ml-2">Kepuasan</span></div>
+        <div class="location-badge hidden">
+          <i class="fas fa-map-marker-alt text-purple-300"></i>
+          <span>Yogyakarta, Indonesia</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layanan unggulan (section dengan kartu) -->
+    <section id="layanan" class="scroll-mt-24 mb-20">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-3 gradient-text-primary">Layanan Profesional</h2>
+      <p class="text-purple-200/70 mb-10 max-w-2xl">Pilih sesuai kebutuhan Anda, dari script instan hingga jasa custom.</p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- card 1: pembuatan website -->
+        <div class="service-card p-6 flex flex-col items-start">
+          <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4 border border-purple-400/30"><i class="fas fa-laptop-code text-2xl text-purple-300"></i></div>
+          <h3 class="text-xl font-semibold mb-2 text-purple-100">Jasa Website</h3>
+          <p class="text-purple-200/70 text-sm leading-relaxed flex-grow">Company profile, toko online, landing page, dashboard. Modern, responsive, dan SEO friendly.</p>
+          <span class="mt-4 text-purple-300 text-sm">Mulai Rp 1,2jt</span>
+        </div>
+        <!-- card 2: jual script website -->
+        <div class="service-card p-6 flex flex-col items-start">
+          <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4 border border-purple-400/30"><i class="fas fa-file-code text-2xl text-purple-300"></i></div>
+          <h3 class="text-xl font-semibold mb-2 text-purple-100">Script Website SIAP PAKAI</h3>
+          <p class="text-purple-200/70 text-sm leading-relaxed flex-grow">HTML, Tailwind, Laravel, React. Tinggal upload, edit konten, langsung jadi.</p>
+          <span class="mt-4 text-purple-300 text-sm">Mulai Rp 350k</span>
+        </div>
+        <!-- card 3: jual script bot wa -->
+        <div class="service-card p-6 flex flex-col items-start">
+          <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4 border border-purple-400/30"><i class="fab fa-whatsapp text-2xl text-purple-300"></i></div>
+          <h3 class="text-xl font-semibold mb-2 text-purple-100">Script Bot WhatsApp</h3>
+          <p class="text-purple-200/70 text-sm leading-relaxed flex-grow">Bot multifitur (stiker, downloader, group management). Support multi-device.</p>
+          <span class="mt-4 text-purple-300 text-sm">Mulai Rp 200k</span>
+        </div>
+        <!-- card 4: jasa pembuatan bot -->
+        <div class="service-card p-6 flex flex-col items-start">
+          <div class="w-12 h-12 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-4 border border-purple-400/30"><i class="fas fa-robot text-2xl text-purple-300"></i></div>
+          <h3 class="text-xl font-semibold mb-2 text-purple-100">Jasa Bot WhatsApp</h3>
+          <p class="text-purple-200/70 text-sm leading-relaxed flex-grow">Bot custom sesuai kebutuhan: CRM, order, broadcast, API integration.</p>
+          <span class="mt-4 text-purple-300 text-sm">Custom harga</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- KATALOG PRODUK (script siap pakai + filter) -->
+    <section id="katalog" class="scroll-mt-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-semibold gradient-text-primary">Katalog Script & Bot</h2>
+          <p class="text-purple-200/70 mt-1">Tinggal pakai, bebas edit, support penuh.</p>
+        </div>
+      </div>
+
+      <!-- search bar + category filter (interactive) -->
+      <div class="flex flex-col lg:flex-row gap-5 items-start lg:items-center justify-between mb-10">
+        <div class="relative w-full lg:w-80">
+          <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-purple-300/70 text-lg z-10"></i>
+          <input type="text" id="search-input" placeholder="Cari script atau bot..." class="search-input w-full py-3.5 text-white placeholder-purple-200/40 text-sm pl-12">
+        </div>
+        <div id="category-filter" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <!-- product grid -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6"></div>
+      
+      <!-- no result message -->
+      <div id="no-result-msg" class="text-center py-16 hidden">
+        <i class="fas fa-box-open text-5xl text-purple-300/30 mb-4"></i>
+        <p class="text-xl text-purple-200/50">Tidak ditemukan script yang cocok</p>
+      </div>
+    </section>
+
+    <!-- CTA besar -->
+    <section class="glass-panel rounded-3xl p-10 md:p-14 my-20 text-center">
+      <h3 class="text-3xl md:text-4xl font-semibold mb-4 gradient-text-primary">Butuh bot atau website custom?</h3>
+      <p class="text-purple-200/80 max-w-2xl mx-auto mb-8">Diskusikan kebutuhan Anda langsung dengan tim YanaMiku. Respon cepat, solusi tepat.</p>
+      <a href="https://wa.me/6285793589243?text=Halo%20YanaMiku%2C%20saya%20ingin%20konsultasi%20proyek" target="_blank" class="whatsapp-btn inline-flex items-center gap-3 px-8 py-4 rounded-full text-lg font-medium">
+        <i class="fab fa-whatsapp text-2xl"></i> Hubungi via WhatsApp
+      </a>
+    </section>
+  </main>
+
+  <!-- footer with updated social links and real-time year -->
+  <footer class="glass-nav mt-10 py-8 px-5 relative z-20">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-purple-200/60">
+      <div class="flex items-center gap-2">
+        <i class="fas fa-crown text-purple-400"></i>
+        <span>© <span id="currentYear"></span> YanaMiku. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <div class="location-badge hidden">
+          <i class="fas fa-map-marker-alt text-purple-300"></i>
+          <span>Yogyakarta, Indonesia</span>
+        </div>
+        <div class="flex space-x-6">
+          <!-- Instagram - yanamiku.shop -->
+          <a href="https://instagram.com/yanamiku.shop" target="_blank" class="footer-link text-xl text-purple-300"><i class="fab fa-instagram"></i></a>
+          <!-- GitHub - YanaMiku -->
+          <a href="https://github.com/YanaMiku" target="_blank" class="footer-link text-xl text-purple-300"><i class="fab fa-github"></i></a>
+          <!-- YouTube - @IyuzakiYanagi -->
+          <a href="https://youtube.com/@IyuzakiYanagi" target="_blank" class="footer-link text-xl text-purple-300"><i class="fab fa-youtube"></i></a>
+          <!-- Portfolio - yanamiku.github.io -->
+          <a href="https://yanamiku.github.io" target="_blank" class="footer-link text-xl text-purple-300"><i class="fas fa-briefcase"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Particles.js library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <script>
+    (function() {
+      // ========== SET CURRENT YEAR IN FOOTER ==========
+      const currentYearSpan = document.getElementById('currentYear');
+      if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+      }
+
+      // ========== WELCOME POPUP ==========
+      // Selalu muncul saat refresh (tanpa session)
+      const welcomePopup = document.getElementById('welcomePopup');
+      const closeWelcomePopup = document.getElementById('closeWelcomePopup');
+
+      // Tampilkan popup
+      welcomePopup.classList.remove('hidden');
+
+      // Tutup popup saat tombol X diklik
+      closeWelcomePopup.addEventListener('click', function() {
+        welcomePopup.classList.add('hidden');
+      });
+
+      // Tutup popup saat klik di luar card
+      welcomePopup.addEventListener('click', function(e) {
+        if (e.target === welcomePopup) {
+          welcomePopup.classList.add('hidden');
+        }
+      });
+
+      // ========== SMOOTH SCROLL TO TOP ==========
+      // Function to scroll smoothly to top
+      function scrollToTop(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+
+      // Add event listeners to all "Beranda" links
+      const berandaLinks = document.querySelectorAll('#beranda-link, #dropdown-beranda');
+      berandaLinks.forEach(link => {
+        link.addEventListener('click', scrollToTop);
+      });
+
+      // ========== PARTICLES BACKGROUND ==========
+      particlesJS('particles-js', {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800
+            }
+          },
+          color: {
+            value: ['#b88eff', '#c28eff', '#a56aff', '#d8b0ff']
+          },
+          shape: {
+            type: ['circle', 'triangle'],
+            stroke: {
+              width: 0,
+              color: '#000000'
+            }
+          },
+          opacity: {
+            value: 0.3,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 0.5,
+              opacity_min: 0.1,
+              sync: false
+            }
+          },
+          size: {
+            value: 4,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 2,
+              size_min: 0.5,
+              sync: false
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: '#b88eff',
+            opacity: 0.15,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 1.5,
+            direction: 'none',
+            random: true,
+            straight: false,
+            out_mode: 'out',
+            bounce: false,
+            attract: {
+              enable: true,
+              rotateX: 600,
+              rotateY: 1200
+            }
+          }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: {
+              enable: true,
+              mode: 'grab'
+            },
+            onclick: {
+              enable: true,
+              mode: 'push'
+            },
+            resize: true
+          },
+          modes: {
+            grab: {
+              distance: 200,
+              line_linked: {
+                opacity: 0.3
+              }
+            },
+            push: {
+              particles_nb: 3
+            }
+          }
+        },
+        retina_detect: true
+      });
+
+      // ========== DROPDOWN MENU ==========
+      const dropdownToggle = document.getElementById('dropdownToggle');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+
+      dropdownToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle('open');
+      });
+
+      document.addEventListener('click', function(event) {
+        if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+          dropdownMenu.classList.remove('open');
+        }
+      });
+
+      dropdownMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function() {
+          dropdownMenu.classList.remove('open');
+        });
+      });
+
+      // ========== TYPEWRITER EFFECT ==========
+      const typewriterElement = document.getElementById('typewriter');
+      const phrases = ['Website Profesional', 'Script Siap Pakai', 'Bot WhatsApp Custom', 'Solusi Digital'];
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      let currentText = '';
+      
+      function typeWriter() {
+        const fullText = phrases[phraseIndex];
+        
+        if (isDeleting) {
+          currentText = fullText.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          currentText = fullText.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        typewriterElement.textContent = currentText;
+
+        if (!isDeleting && charIndex === fullText.length) {
+          isDeleting = true;
+          setTimeout(typeWriter, 1500);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(typeWriter, 200);
+        } else {
+          const speed = isDeleting ? 50 : 80;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      typeWriter();
+
+      // ========== DATA PRODUK & FILTER ==========
+      const products = [
+        { 
+          id: 1, 
+          name: 'Script Website Company Profile', 
+          category: 'Script Website', 
+          description: 'HTML + Tailwind, 5 halaman, animasi smooth, fully responsive. Cocok untuk perusahaan atau personal brand.', 
+          price: 'Rp 399k', 
+          icon: 'fas fa-building',
+          fullDesc: 'Paket lengkap company profile modern dengan 5 halaman: Home, About, Services, Portfolio, Contact. Dibangun dengan HTML5, Tailwind CSS, dan animasi scroll reveal. Fully responsive dan mudah diedit.' 
+        },
+        { 
+          id: 2, 
+          name: 'Script Toko Online Sederhana', 
+          category: 'Script Website', 
+          description: 'Integrasi cart, WA order, dashboard admin (PHP native).', 
+          price: 'Rp 549k', 
+          icon: 'fas fa-shopping-cart',
+          fullDesc: 'Toko online ringan dengan PHP native. Fitur: manajemen produk, keranjang belanja, integrasi WhatsApp untuk notifikasi order, dashboard admin sederhana. Database MySQL.' 
+        },
+        { 
+          id: 3, 
+          name: 'Bot WhatsApp Multi Device', 
+          category: 'Script Bot', 
+          description: 'Fitur: sticker, downloader, group, anti link, open source.', 
+          price: 'Rp 250k', 
+          icon: 'fab fa-whatsapp',
+          fullDesc: 'Bot WhatsApp multi-device dengan fitur lengkap: stiker, downloader YouTube/TikTok, anti link, group management, dan welcome message. Support Node.js, mudah dihosting.' 
+        },
+        { 
+          id: 4, 
+          name: 'Bot WhatsApp Booking / Order', 
+          category: 'Script Bot', 
+          description: 'Bot pemesanan jasa, dengan notifikasi admin dan customer.', 
+          price: 'Rp 350k', 
+          icon: 'fas fa-calendar-check',
+          fullDesc: 'Bot khusus untuk bisnis jasa: sistem booking, konfirmasi otomatis, notifikasi ke admin dan customer. Bisa diintegrasikan dengan Google Sheets.' 
+        },
+        { 
+          id: 5, 
+          name: 'Script Dashboard Admin (Laravel)', 
+          category: 'Script Website', 
+          description: 'Template admin panel dengan user management, siap pakai.', 
+          price: 'Rp 699k', 
+          icon: 'fas fa-tachometer-alt',
+          fullDesc: 'Admin panel berbasis Laravel 10 dengan fitur: user management, role permission, CRUD generator, dan tema modern. Siap dikembangkan untuk berbagai kebutuhan.' 
+        },
+        { 
+          id: 6, 
+          name: 'Jasa Pembuatan Bot Custom', 
+          category: 'Jasa Bot', 
+          description: 'Bot sesuai kebutuhan Anda (API, database, broadcast).', 
+          price: 'Nego', 
+          icon: 'fas fa-robot',
+          fullDesc: 'Kami buatkan bot WhatsApp custom sesuai kebutuhan spesifik Anda: integrasi API, database, sistem broadcast, auto-reply cerdas, dan fitur lainnya. Konsultasikan kebutuhan Anda.' 
+        },
+        { 
+          id: 7, 
+          name: 'Jasa Website Company Profile', 
+          category: 'Jasa Website', 
+          description: 'Desain premium, 1 halaman / multi halaman, SEO ready.', 
+          price: 'Rp 1.5jt', 
+          icon: 'fas fa-briefcase',
+          fullDesc: 'Jasa pembuatan company profile premium dengan desain modern dan profesional. Termasuk: 5 halaman, optimasi SEO, responsive, dan free hosting 1 tahun.' 
+        },
+        { 
+          id: 8, 
+          name: 'Script Bot Payment Gateway', 
+          category: 'Script Bot', 
+          description: 'Bot dengan pembayaran otomatis (QRIS, transfer).', 
+          price: 'Rp 475k', 
+          icon: 'fas fa-credit-card',
+          fullDesc: 'Bot WhatsApp dengan sistem payment gateway: generate invoice, konfirmasi pembayaran otomatis (QRIS/transfer), notifikasi status. Cocok untuk bisnis online.' 
+        }
+      ];
+
+      const WA_NUMBER = '6285793589243';
+      let activeCategory = 'Semua';
+      let searchTerm = '';
+
+      const gridEl = document.getElementById('product-grid');
+      const searchInput = document.getElementById('search-input');
+      const categoryContainer = document.getElementById('category-filter');
+      const noResultMsg = document.getElementById('no-result-msg');
+
+      // Modal elements
+      const modal = document.getElementById('productModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalIcon = document.getElementById('modalIcon');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalPrice = document.getElementById('modalPrice');
+      const modalCategory = document.getElementById('modalCategory');
+      const modalWhatsApp = document.getElementById('modalWhatsApp');
+      const closeModal = document.getElementById('closeModal');
+
+      // Kategori unik + 'Semua'
+      const cats = ['Semua', ...new Set(products.map(p => p.category))];
+
+      function renderCategoryTabs() {
+        categoryContainer.innerHTML = '';
+        cats.forEach(cat => {
+          const btn = document.createElement('button');
+          btn.className = `category-tab ${cat === activeCategory ? 'active' : ''}`;
+          btn.dataset.category = cat;
+          btn.textContent = cat;
+          categoryContainer.appendChild(btn);
+        });
+      }
+      renderCategoryTabs();
+
+      // Intersection Observer untuk reveal animation
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+      function observeCards() {
+        document.querySelectorAll('.service-card').forEach(card => observer.observe(card));
+      }
+
+      // Function to open modal
+      function openModal(product) {
+        modalTitle.textContent = product.name;
+        modalIcon.className = product.icon + ' text-8xl text-purple-300/90';
+        modalDescription.textContent = product.fullDesc || product.description;
+        modalPrice.textContent = product.price;
+        modalCategory.textContent = product.category;
+        modalWhatsApp.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Halo YanaMiku, saya tertarik dengan: ' + product.name + ' (kode: ' + product.id + ')')}`;
+        modal.classList.add('active');
+      }
+
+      // Close modal function
+      function closeModalFunc() {
+        modal.classList.remove('active');
+      }
+
+      // Event listeners for modal
+      closeModal.addEventListener('click', closeModalFunc);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModalFunc();
+        }
+      });
+
+      function renderProducts(productArray) {
+        if (productArray.length === 0) {
+          gridEl.innerHTML = '';
+          noResultMsg.classList.remove('hidden');
+          return;
+        }
+        noResultMsg.classList.add('hidden');
+
+        let html = '';
+        productArray.forEach(prod => {
+          const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Halo YanaMiku, saya tertarik dengan: ' + prod.name + ' (kode: ' + prod.id + ')')}`;
+
+          html += `
+            <div class="service-card p-5 flex flex-col">
+              <div class="product-image-container cursor-pointer detail-trigger" data-id="${prod.id}">
+                <i class="${prod.icon}"></i>
+              </div>
+              <span class="text-xs font-medium px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 self-start border border-purple-400/30 mb-3">${prod.category}</span>
+              <h3 class="text-lg font-semibold text-purple-100">${prod.name}</h3>
+              <p class="text-purple-200/60 text-sm mt-1 mb-4 flex-grow">${prod.description}</p>
+              <div class="product-price-row mt-2">
+                <span class="product-price text-xl font-light text-white/90">${prod.price}</span>
+                <div class="product-actions">
+                  <button class="detail-btn detail-trigger flex items-center gap-1 px-3 py-2 rounded-full text-sm" data-id="${prod.id}">
+                    <i class="fas fa-info-circle"></i> Detail
+                  </button>
+                  <a href="${waLink}" target="_blank" class="whatsapp-btn flex items-center gap-1 px-3 py-2 rounded-full text-sm">
+                    <i class="fab fa-whatsapp"></i> Ambil
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+
+        gridEl.innerHTML = html;
+
+        // Add event listeners to detail buttons
+        document.querySelectorAll('.detail-trigger').forEach(el => {
+          el.addEventListener('click', function(e) {
+            e.preventDefault();
+            const productId = parseInt(this.dataset.id);
+            const product = products.find(p => p.id === productId);
+            if (product) {
+              openModal(product);
+            }
+          });
+        });
+
+        observeCards();
+      }
+
+      function filterProducts() {
+        const term = searchTerm.toLowerCase().trim();
+        const filtered = products.filter(p => {
+          const matchSearch = p.name.toLowerCase().includes(term) || p.description.toLowerCase().includes(term);
+          const matchCategory = activeCategory === 'Semua' || p.category === activeCategory;
+          return matchSearch && matchCategory;
+        });
+        renderProducts(filtered);
+      }
+
+      searchInput.addEventListener('input', e => {
+        searchTerm = e.target.value;
+        filterProducts();
+      });
+
+      categoryContainer.addEventListener('click', e => {
+        const btn = e.target.closest('.category-tab');
+        if (!btn) return;
+        document.querySelectorAll('.category-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.dataset.category;
+        filterProducts();
+      });
+
+      // initial render
+      renderProducts(products);
+      observeCards();
+
+      // smooth scroll untuk link dropdown
+      document.querySelectorAll('a[href^="#"]:not(#beranda-link):not(#dropdown-beranda)').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === '#') return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
