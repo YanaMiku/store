@@ -57,13 +57,102 @@
       background: linear-gradient(165deg, #0d0b1a 0%, #1e1a3a 50%, #2a1f3c 100%);
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       position: relative;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
     ::-webkit-scrollbar { width: 10px; height: 10px; }
     ::-webkit-scrollbar-track { background: rgba(25, 20, 45, 0.5); backdrop-filter: blur(4px); }
     ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #b88eff, #8a6cf0); border-radius: 8px; border: 2px solid rgba(25, 20, 45, 0.3); }
     ::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, #c28eff, #9d6cf0); }
     * { scrollbar-width: thin; scrollbar-color: #8a6cf0 rgba(25, 20, 45, 0.5); }
-    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+    
+    /* Particles canvas styles */
+    #particles-js { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      z-index: 0; 
+      pointer-events: none; 
+    }
+    
+    /* Globe canvas styles */
+    #globe-canvas {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.9;
+    }
+    
+    /* Container for hero section with globe */
+    .hero-with-globe {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 600px;
+    }
+    
+    @media (min-width: 1024px) {
+      .hero-with-globe {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      
+      .hero-text-content {
+        flex: 1;
+        max-width: 50%;
+        z-index: 10;
+      }
+      
+      .hero-globe-container {
+        flex: 1;
+        position: relative;
+        height: 600px;
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      #globe-canvas {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        top: auto;
+        left: auto;
+        transform: none;
+      }
+    }
+    
+    @media (max-width: 1023px) {
+      .hero-globe-container {
+        width: 100%;
+        height: 400px;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+      
+      #globe-canvas {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        top: auto;
+        left: auto;
+        transform: none;
+      }
+    }
+    
     .glass-panel { background: rgba(25, 20, 45, 0.4); backdrop-filter: blur(12px) saturate(180%); -webkit-backdrop-filter: blur(12px) saturate(180%); border: 1px solid rgba(180, 140, 255, 0.2); }
     .glass-nav { background: rgba(20, 15, 40, 0.7); backdrop-filter: blur(16px) saturate(200%); -webkit-backdrop-filter: blur(16px) saturate(200%); border-bottom: 1px solid rgba(200, 150, 255, 0.2); position: relative; z-index: 100; }
     .service-card { background: rgba(30, 20, 50, 0.45); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(200, 150, 255, 0.15); border-radius: 2rem; transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1); opacity: 0; transform: translateY(30px); will-change: transform, opacity; }
@@ -193,31 +282,38 @@
   <!-- MAIN CONTENT -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-5 sm:px-7 lg:px-8 py-10 md:py-16 relative z-20">
     
-    <!-- HERO SECTION -->
-    <section class="text-center md:text-left mb-20">
-      <div class="glass-panel inline-block px-6 py-3 mb-5 rounded-full">
-        <span class="text-xs font-semibold uppercase tracking-wider text-purple-300"><i class="fas fa-code mr-2 text-purple-400" aria-hidden="true"></i>Developer & Creator Tools</span>
+    <!-- HERO SECTION WITH GLOBE -->
+    <section class="hero-with-globe mb-20">
+      <div class="hero-text-content">
+        <div class="glass-panel inline-block px-6 py-3 mb-5 rounded-full">
+          <span class="text-xs font-semibold uppercase tracking-wider text-purple-300"><i class="fas fa-code mr-2 text-purple-400" aria-hidden="true"></i>Developer & Creator Tools</span>
+        </div>
+        <h1 class="premium-title text-4xl md:text-6xl font-bold leading-tight">
+          <span class="gradient-text-primary">YanaMiku</span><br>
+          <span class="typewriter-container">
+            <span id="typewriter" class="gradient-text-secondary"></span>
+            <span class="typewriter-cursor"></span>
+          </span>
+        </h1>
+        <p class="text-lg text-purple-200/80 mt-6 max-w-2xl">Jasa pembuatan website profesional, jual script siap pakai, dan pembuatan bot WhatsApp custom. Cepat, modern, dan support penuh.</p>
+        <div class="mt-8 flex flex-wrap gap-5">
+          <a href="#katalog" class="bg-purple-600/40 hover:bg-purple-600/60 backdrop-blur-sm border border-purple-400/50 px-8 py-3 rounded-full text-base font-medium transition flex items-center gap-3 text-white">
+            <i class="fas fa-store text-purple-300" aria-hidden="true"></i> Lihat Script
+          </a>
+          <a href="https://wa.me/6285793589243?text=Halo%20YanaMiku%2C%20saya%20tertarik%20dengan%20jasa%20pembuatan%20website%20/%20bot" target="_blank" rel="noopener noreferrer" class="bg-transparent border border-purple-400/40 px-8 py-3 rounded-full text-base font-medium hover:bg-purple-500/10 transition flex items-center gap-3 text-purple-200">
+            <i class="fab fa-whatsapp text-green-400" aria-hidden="true"></i> Konsultasi Gratis
+          </a>
+        </div>
+        <div class="flex flex-wrap items-center gap-8 mt-12">
+          <div><span class="text-2xl font-bold text-purple-300">50+</span> <span class="text-purple-200/70 ml-2">Project</span></div>
+          <div><span class="text-2xl font-bold text-purple-300">24/7</span> <span class="text-purple-200/70 ml-2">Support</span></div>
+          <div><span class="text-2xl font-bold text-purple-300">100%</span> <span class="text-purple-200/70 ml-2">Kepuasan</span></div>
+        </div>
       </div>
-      <h1 class="premium-title text-4xl md:text-6xl font-bold leading-tight">
-        <span class="gradient-text-primary">YanaMiku</span><br>
-        <span class="typewriter-container">
-          <span id="typewriter" class="gradient-text-secondary"></span>
-          <span class="typewriter-cursor"></span>
-        </span>
-      </h1>
-      <p class="text-lg text-purple-200/80 mt-6 max-w-2xl mx-auto md:mx-0">Jasa pembuatan website profesional, jual script siap pakai, dan pembuatan bot WhatsApp custom. Cepat, modern, dan support penuh.</p>
-      <div class="mt-8 flex flex-wrap gap-5 justify-center md:justify-start">
-        <a href="#katalog" class="bg-purple-600/40 hover:bg-purple-600/60 backdrop-blur-sm border border-purple-400/50 px-8 py-3 rounded-full text-base font-medium transition flex items-center gap-3 text-white">
-          <i class="fas fa-store text-purple-300" aria-hidden="true"></i> Lihat Script
-        </a>
-        <a href="https://wa.me/6285793589243?text=Halo%20YanaMiku%2C%20saya%20tertarik%20dengan%20jasa%20pembuatan%20website%20/%20bot" target="_blank" rel="noopener noreferrer" class="bg-transparent border border-purple-400/40 px-8 py-3 rounded-full text-base font-medium hover:bg-purple-500/10 transition flex items-center gap-3 text-purple-200">
-          <i class="fab fa-whatsapp text-green-400" aria-hidden="true"></i> Konsultasi Gratis
-        </a>
-      </div>
-      <div class="flex flex-wrap items-center gap-8 mt-12 justify-center md:justify-start">
-        <div><span class="text-2xl font-bold text-purple-300">50+</span> <span class="text-purple-200/70 ml-2">Project</span></div>
-        <div><span class="text-2xl font-bold text-purple-300">24/7</span> <span class="text-purple-200/70 ml-2">Support</span></div>
-        <div><span class="text-2xl font-bold text-purple-300">100%</span> <span class="text-purple-200/70 ml-2">Kepuasan</span></div>
+      
+      <!-- Globe Container (Diperbesar) -->
+      <div class="hero-globe-container">
+        <canvas id="globe-canvas"></canvas>
       </div>
     </section>
 
@@ -465,6 +561,164 @@
         });
       });
     })();
+  </script>
+
+  <!-- Globe Particles Script (DIPERBESAR) -->
+  <script>
+    // Globe Particles - UKURAN DIPERBESAR
+    var canvas = document.getElementById('globe-canvas');
+    var ctx = canvas.getContext("2d");
+    var spheres = [];
+    var imgdata = [];
+    
+    function resizeCanvas() {
+      const container = document.querySelector('.hero-globe-container');
+      if (container) {
+        if (window.innerWidth >= 1024) {
+          canvas.width = container.clientWidth;
+          canvas.height = container.clientHeight;
+        } else {
+          canvas.width = container.clientWidth;
+          canvas.height = container.clientHeight;
+        }
+        
+        // Update screen dimensions for globe rendering - DIPERBESAR
+        screenX = canvas.width / 2;
+        screenY = canvas.height / 2;
+        screenScale = Math.min(canvas.width, canvas.height) * 2.5; // DIPERBESAR dari 1.5 ke 2.5
+        
+        // Recreate sphere with new dimensions - DIPERBESAR radius
+        if (isReadyAnimation) {
+          spheres = [];
+          // Radius diperbesar dari canvas.height/4 ke canvas.height/2.8
+          spheres.push(new Sphere(0, 0, canvas.height / 2.8, imgWidth, imgHeight));
+        }
+      }
+    }
+    
+    var imgWidth = 120; // DIPERBESAR dari 100 ke 120 untuk resolusi lebih tinggi
+    var imgHeight = 60; // DIPERBESAR dari 50 ke 60 untuk resolusi lebih tinggi
+    var screenX = 0;
+    var screenY = 0;
+    var screenScale = 1500; // DIPERBESAR dari 1000 ke 1500
+    var rotation = 0;
+    var isReadyAnimation = false;
+
+    var Vector = function (x, y, z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    var Particle = function (x, y, z, colorsArrIndex) {
+        this.pos = new Vector(x, y, z);
+        this.posModel = new Vector(x, y, z);
+        this.GenerateColorFromImgIndex(colorsArrIndex);
+    }
+
+    Particle.prototype.GenerateColorFromImgIndex = function (i) {
+        this.r = 256 - imgdata[i * 4 + 0];
+        this.g = 256 - imgdata[i * 4 + 1];
+        this.b = imgdata[i * 4 + 2];
+        this.a = 0;
+    }
+
+    var Sphere = function (x, y, radius, numPointsX, numPointsY) {
+        this.pos = new Vector(x, y, 1);
+        this.particles = [];
+        this.GeneratePoints(x, y, radius, numPointsX, numPointsY);
+    }
+
+    function CreateColorsArr() {
+        var canvasimg = document.createElement('canvas');
+        var ctximg = canvasimg.getContext("2d");
+        var img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.src = "https://ucarecdn.com/684548ca-0157-4455-9fe5-9782af655cf0/worldmapsmall_bw9sas.png";
+        
+        img.onload = function () {
+            canvasimg.width = imgWidth;
+            canvasimg.height = imgHeight;
+            ctximg.translate(imgWidth, 0);
+            ctximg.scale(-1, 1);
+            ctximg.drawImage(img, 0, 0, imgWidth, imgHeight);
+            imgdata = ctximg.getImageData(0, 0, imgWidth, imgHeight).data;
+            ctximg.clearRect(0, 0, imgWidth, imgHeight);
+            // Radius diperbesar
+            spheres.push(new Sphere(0, 0, Math.min(canvas.height, canvas.width) / 2.8, imgWidth, imgHeight));
+            isReadyAnimation = true;
+        }
+        
+        img.onerror = function() {
+          // Fallback if image fails to load - buat sphere dengan warna default
+          isReadyAnimation = true;
+          // Generate dummy data
+          imgdata = new Array(imgWidth * imgHeight * 4).fill(200);
+          spheres.push(new Sphere(0, 0, Math.min(canvas.height, canvas.width) / 2.8, imgWidth, imgHeight));
+        }
+    }
+
+    Sphere.prototype.GeneratePoints = function (x, y, radius, num, num2) {
+        x = x / 2;
+        y = y / 2;
+        num = Math.floor(num);
+        var angle = 2 * Math.PI / num;
+        var angle2 = Math.PI / num2;
+        for (var j = 0; j <= num2; j++) {
+            for (var i = 0; i < num; i++) {
+                var rx = radius * Math.cos(angle * i) * Math.sin(angle2 * j);
+                var rz = radius * Math.sin(angle * i) * Math.sin(angle2 * j);
+                var ry = radius * Math.cos(angle2 * j);
+                this.particles.push(new Particle(x + rx, y + ry, rz, j * imgWidth + i));
+            }
+        }
+    }
+
+    Sphere.prototype.RotateAxisY = function (angle) {
+        for (var i = 0; i < this.particles.length; i++) {
+            this.particles[i].posModel.x = this.particles[i].pos.x * Math.cos(angle) + this.particles[i].pos.z * (-1) * Math.sin(angle);
+            this.particles[i].posModel.y = this.particles[i].pos.y;
+            this.particles[i].posModel.z = this.particles[i].pos.x * Math.sin(angle) + this.particles[i].pos.z * Math.cos(angle);
+        }
+    }
+
+    Sphere.prototype.Draw = function (ctx) {
+        ctx.beginPath();
+        for (var i = 0; i < this.particles.length; i++) {
+            var z = this.particles[i].posModel.z;
+            var x = this.particles[i].posModel.x * screenScale / (z * (-1) + screenScale) + screenX;
+            var y = this.particles[i].posModel.y * screenScale / (z * (-1) + screenScale) + screenY;
+            var a = (this.particles[i].posModel.z + (imgWidth / 2)) / imgWidth;
+            if (a > 0.15) { // Threshold lebih rendah agar lebih banyak titik yang terlihat
+                ctx.fillStyle = "rgba(" + this.particles[i].r + "," + this.particles[i].g + "," + this.particles[i].b + "," + a * 0.9 + ")";
+                // Ukuran titik diperbesar
+                ctx.fillRect(x, y, 2.5, 2.5); // DIPERBESAR dari 1.5 ke 2.5
+            }
+        }
+    }
+
+    function loop() {
+        if (canvas && ctx) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (isReadyAnimation && spheres.length > 0) {
+                spheres[0].Draw(ctx);
+                spheres[0].RotateAxisY(rotation);
+                rotation += 0.015; // Rotasi lebih lambat agar lebih smooth
+            }
+        }
+        requestAnimationFrame(loop);
+    }
+
+    // Initialize globe
+    window.addEventListener('load', function() {
+      resizeCanvas();
+      CreateColorsArr();
+      loop();
+    });
+    
+    window.addEventListener('resize', function() {
+      resizeCanvas();
+    });
   </script>
 </body>
 </html>
