@@ -175,9 +175,15 @@
     .dropdown-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.7rem 1.2rem; color: rgba(230, 210, 255, 0.8); transition: all 0.15s; font-size: 0.95rem; }
     .dropdown-item:hover { background: rgba(160, 100, 255, 0.2); color: white; }
     .dropdown-item i { width: 1.25rem; color: #c28eff; }
-    .premium-title { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
     
-    /* TYPEWRITER STYLES - DIPERKECIL UKURANNYA */
+    /* Premium Title Styles */
+    .premium-title { 
+      font-family: 'Syne', sans-serif; 
+      font-weight: 700; 
+      letter-spacing: -0.02em; 
+    }
+    
+    /* Typewriter Container - Diperkecil ukuran teksnya */
     .typewriter-container { 
       display: inline-flex; 
       align-items: center; 
@@ -185,7 +191,7 @@
       line-height: 1.2; 
       vertical-align: middle; 
       max-width: 100%; 
-      flex-wrap: wrap; 
+      flex-wrap: nowrap;
     }
     
     #typewriter { 
@@ -194,28 +200,39 @@
       overflow: hidden; 
       text-overflow: ellipsis; 
       max-width: 100%;
-      font-size: 1.8rem; /* Diperkecil dari 2.5rem */
-      font-weight: 500; /* Lebih ringan */
+      font-size: 0.8em; /* Diperkecil menjadi 0.8 dari ukuran normal */
     }
     
+    /* Typewriter Cursor - Menyesuaikan dengan tinggi font */
     .typewriter-cursor { 
       display: inline-block; 
-      width: 2px; /* Lebih tipis */
-      height: 1.5em; 
-      background-color: #c28eff; 
+      width: 3px; 
+      height: 1.2em; /* Sama dengan line-height */
+      background: linear-gradient(180deg, #c28eff, #a56aff);
       margin-left: 4px; 
       animation: blink 1s infinite; 
       vertical-align: middle; 
-      flex-shrink: 0; 
+      flex-shrink: 0;
+      border-radius: 2px;
+      box-shadow: 0 0 8px #c28eff;
     }
     
+    @keyframes blink { 
+      0%, 50% { opacity: 1; } 
+      51%, 100% { opacity: 0; } 
+    }
+    
+    /* Responsive font sizes untuk typewriter */
     @media (max-width: 768px) { 
       .premium-title { 
         font-size: 2.5rem; 
       } 
       #typewriter { 
-        font-size: 1.5rem; /* Diperkecil untuk mobile */
-      } 
+        font-size: 0.75em; 
+      }
+      .typewriter-cursor {
+        height: 1.1em;
+      }
     }
     
     @media (max-width: 480px) { 
@@ -223,12 +240,13 @@
         font-size: 2rem; 
       } 
       #typewriter { 
-        font-size: 1.2rem; /* Diperkecil untuk mobile kecil */
-        max-width: 280px; 
-      } 
+        font-size: 0.7em; 
+        max-width: 250px; 
+      }
+      .typewriter-cursor {
+        height: 1em;
+      }
     }
-    
-    @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
     
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
     .modal-overlay.active { opacity: 1; visibility: visible; }
@@ -256,7 +274,6 @@
     .product-image-container { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 1.5rem; overflow: hidden; margin-bottom: 1rem; background: linear-gradient(135deg, rgba(160, 100, 255, 0.2), rgba(100, 50, 200, 0.3)); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(200, 150, 255, 0.3); }
     .product-image-container i { font-size: 5rem; color: rgba(200, 150, 255, 0.9); filter: drop-shadow(0 0 15px rgba(160, 100, 255, 0.5)); transition: all 0.3s ease; }
     .product-image-container:hover i { transform: scale(1.1); color: #c28eff; filter: drop-shadow(0 0 20px rgba(200, 150, 255, 0.8)); }
-    
     .animated-brand-text { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; background: linear-gradient(90deg, #e0b0ff 0%, #c28eff 25%, #a56aff 50%, #c28eff 75%, #e0b0ff 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 2s linear infinite; }
     @keyframes shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
     @media (max-width: 480px) { .animated-brand-text { font-size: 1rem; } }
@@ -360,7 +377,7 @@
         </div>
       </div>
       
-      <!-- Globe Container -->
+      <!-- Globe Container (Diperbesar) -->
       <div class="hero-globe-container">
         <canvas id="globe-canvas"></canvas>
       </div>
@@ -491,16 +508,14 @@
       document.addEventListener('click', (event) => { if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) dropdownMenu.classList.remove('open'); });
       dropdownMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => dropdownMenu.classList.remove('open')));
 
-      // TYPEWRITER - DENGAN TEKS YANG LEBIH PANJANG
+      // Typewriter - dengan teks yang lebih panjang
       const typewriterElement = document.getElementById('typewriter');
-      // Teks diperpanjang untuk menunjukkan bahwa typewriter bisa memuat teks panjang
       const phrases = [
-        'Website Profesional & Modern', 
-        'Script Siap Pakai Dengan Fitur Lengkap', 
-        'Bot WhatsApp Custom Dengan Banyak Fitur', 
-        'Solusi Digital Untuk Bisnis Anda',
-        'Jasa Pembuatan Website Terpercaya',
-        'Script Bot WhatsApp Multi Device'
+        'Website Profesional & Company Profile',
+        'Script Website Siap Pakai HTML/CSS/JS',
+        'Bot WhatsApp Multi-Fitur Premium',
+        'Jasa Pembuatan Bot Custom Sesuai Kebutuhan',
+        'Solusi Digital Lengkap Untuk Bisnis Anda'
       ];
       let phraseIndex = 0, charIndex = 0, isDeleting = false, currentText = '';
       
@@ -517,14 +532,13 @@
         
         if (!isDeleting && charIndex === fullText.length) { 
           isDeleting = true; 
-          setTimeout(typeWriter, 2000); // Lebih lama menampilkan teks lengkap
+          setTimeout(typeWriter, 2000); // Lebih lama saat pause di akhir kalimat
         } else if (isDeleting && charIndex === 0) { 
           isDeleting = false; 
           phraseIndex = (phraseIndex + 1) % phrases.length; 
           setTimeout(typeWriter, 200); 
         } else { 
-          // Kecepatan mengetik dipercepat sedikit
-          setTimeout(typeWriter, isDeleting ? 40 : 60); 
+          setTimeout(typeWriter, isDeleting ? 40 : 70); // Kecepatan mengetik
         }
       }
       typeWriter();
@@ -635,9 +649,9 @@
     })();
   </script>
 
-  <!-- Globe Particles Script -->
+  <!-- Globe Particles Script (DIPERBESAR) -->
   <script>
-    // Globe Particles
+    // Globe Particles - UKURAN DIPERBESAR
     var canvas = document.getElementById('globe-canvas');
     var ctx = canvas.getContext("2d");
     var spheres = [];
@@ -654,24 +668,25 @@
           canvas.height = container.clientHeight;
         }
         
-        // Update screen dimensions for globe rendering
+        // Update screen dimensions for globe rendering - DIPERBESAR
         screenX = canvas.width / 2;
         screenY = canvas.height / 2;
-        screenScale = Math.min(canvas.width, canvas.height) * 2.5;
+        screenScale = Math.min(canvas.width, canvas.height) * 2.5; // DIPERBESAR dari 1.5 ke 2.5
         
-        // Recreate sphere with new dimensions
+        // Recreate sphere with new dimensions - DIPERBESAR radius
         if (isReadyAnimation) {
           spheres = [];
+          // Radius diperbesar dari canvas.height/4 ke canvas.height/2.8
           spheres.push(new Sphere(0, 0, canvas.height / 2.8, imgWidth, imgHeight));
         }
       }
     }
     
-    var imgWidth = 120;
-    var imgHeight = 60;
+    var imgWidth = 120; // DIPERBESAR dari 100 ke 120 untuk resolusi lebih tinggi
+    var imgHeight = 60; // DIPERBESAR dari 50 ke 60 untuk resolusi lebih tinggi
     var screenX = 0;
     var screenY = 0;
-    var screenScale = 1500;
+    var screenScale = 1500; // DIPERBESAR dari 1000 ke 1500
     var rotation = 0;
     var isReadyAnimation = false;
 
@@ -715,12 +730,13 @@
             ctximg.drawImage(img, 0, 0, imgWidth, imgHeight);
             imgdata = ctximg.getImageData(0, 0, imgWidth, imgHeight).data;
             ctximg.clearRect(0, 0, imgWidth, imgHeight);
+            // Radius diperbesar
             spheres.push(new Sphere(0, 0, Math.min(canvas.height, canvas.width) / 2.8, imgWidth, imgHeight));
             isReadyAnimation = true;
         }
         
         img.onerror = function() {
-          // Fallback if image fails to load
+          // Fallback if image fails to load - buat sphere dengan warna default
           isReadyAnimation = true;
           // Generate dummy data
           imgdata = new Array(imgWidth * imgHeight * 4).fill(200);
@@ -759,9 +775,10 @@
             var x = this.particles[i].posModel.x * screenScale / (z * (-1) + screenScale) + screenX;
             var y = this.particles[i].posModel.y * screenScale / (z * (-1) + screenScale) + screenY;
             var a = (this.particles[i].posModel.z + (imgWidth / 2)) / imgWidth;
-            if (a > 0.15) {
+            if (a > 0.15) { // Threshold lebih rendah agar lebih banyak titik yang terlihat
                 ctx.fillStyle = "rgba(" + this.particles[i].r + "," + this.particles[i].g + "," + this.particles[i].b + "," + a * 0.9 + ")";
-                ctx.fillRect(x, y, 2.5, 2.5);
+                // Ukuran titik diperbesar
+                ctx.fillRect(x, y, 2.5, 2.5); // DIPERBESAR dari 1.5 ke 2.5
             }
         }
     }
@@ -772,7 +789,7 @@
             if (isReadyAnimation && spheres.length > 0) {
                 spheres[0].Draw(ctx);
                 spheres[0].RotateAxisY(rotation);
-                rotation += 0.015;
+                rotation += 0.015; // Rotasi lebih lambat agar lebih smooth
             }
         }
         requestAnimationFrame(loop);
